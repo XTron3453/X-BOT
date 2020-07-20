@@ -1,7 +1,7 @@
+const config = require('./config.json');
+
 const Discord = require('discord.js')
 const bot = new Discord.Client()
-
-const token = "NzI0NzM1NDczMTQ2Mzk2Njg0.XvEnoQ.0Bunx0G1y1QX5lOn-OcUQCNqAuc"
 
 const prefix = "-"
 
@@ -12,9 +12,9 @@ var items = {}
 var visionary = {}
 var antivirus = {}
 var ransomware = {}
-var ransomware_on = false
 var nameDraw = []
 var time = 0
+var ransomware_on = false
 var potatoOn = false
 var potatoDate = null
 var roundCounter = 0
@@ -300,6 +300,10 @@ bot.on('message', msg =>{
 						return item === 4
 					}
 
+					var index = items[msg.author.username].findIndex(findItem)
+					delete items[msg.author.username][index]
+
+					
 					
 
 				} 
@@ -429,4 +433,4 @@ bot.on('message', msg =>{
 
 
 
-bot.login(token);
+bot.login(config.token);
